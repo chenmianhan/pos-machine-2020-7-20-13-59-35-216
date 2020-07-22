@@ -1,0 +1,30 @@
+function getBarcodeObjects
+P:2min;
+D:2min;
+C:none
+A:none
+function CountBarcodeNum
+P:5min;
+D:20min;
+C:The use of object arrays is not proficient enough
+A:Look up the relevant information of the object array, and deepen the impression by doing questions
+function getBarcodeInfoObject
+p:10min;
+D:30min;
+C:Obfuscate the concept of array of objects and array objects
+A:Refer to the relevant information to identify
+function countTotalPrice
+P:2min;
+D:2min;
+C:none
+A:none
+function genereteReceipt
+P:3min;
+D:6min;
+C:There is a problem with the format
+A:Learn JS formatted string knowledge
+function printReceipt
+P:2min;
+D:2min;
+C:none
+A:none
