@@ -101,16 +101,25 @@ function countTotalPrice(barcodeInfoObjects){
 function genereteReceipt(barcodeInfoObjects,totalPrice){
   let receipt="";
   let header="***<store earning no money>Receipt ***\n";
-  let good="";
+  let goods="";
   barcodeInfoObjects.forEach(barcodeInfoObject => {
-    good+="Name: "+barcodeInfoObject["name"]+", Quantity: "+barcodeInfoObject["number"]
-    +", Unit price: "+barcodeInfoObject["price"]+" (yuan), Subtotal: "
-    +barcodeInfoObject["price"]*barcodeInfoObject["number"]
-    +" (yuan)\n"
+    let good="Name: %s, Quantity: %s, Unit price: %s (yuan), Subtotal: %s (yuan)\n"
+    good=good.format(barcodeInfoObject["name"],barcodeInfoObject["number"],
+    barcodeInfoObject["price"],barcodeInfoObject["price"]*barcodeInfoObject["number"]);
+    goods+=good;
+    
   });
   let total="Total: "+totalPrice+" (yuan)\n"
   let line="----------------------\n";
   let footer="**********************";
-  receipt+="\n"+header+good+line+total+footer;
+  receipt+="\n"+header+goods+line+total+footer;
   return receipt;
 }
+String.prototype.format= function(){
+      let args = Array.prototype.slice.call(arguments);
+      let count=0;
+      //通过正则替换%s
+      return this.replace(/%s/g,function(s,i){
+          return args[count++];
+      });
+  }
